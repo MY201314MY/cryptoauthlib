@@ -6,8 +6,7 @@
 
 #include "hal/atca_hal.h"
 
-#include <zephyr.h>
-#include <kernel.h>
+#include <zephyr/kernel.h>
 
 
 #ifndef ATCA_MUTEX_TIMEOUT
@@ -42,7 +41,7 @@ void    hal_free(void* ptr)
  */
 void hal_delay_us(uint32_t delay)
 {
-    k_busy_wait(delay);
+    k_usleep(delay);
 }
 
 /** \brief This function delays for a number of tens of microseconds.
@@ -69,7 +68,7 @@ void hal_delay_ms(uint32_t delay)
 }
 
 
-ATCA_STATUS hal_create_mutex(void ** ppMutex, char* pName)
+ATCA_STATUS hal_create_mutex(void ** ppMutex, const char* pName)
 {
     (void)pName;
 
